@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos/styles.css">
     <link rel="stylesheet" href="estilos/Estyles.css">
+    <script src="./js/app.js" defer></script>
+    <script src="./js/main.js" ></script>
     
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -27,10 +29,35 @@
         
 </head>
 <body>
-    
+<section>
+    <button id="boton_carrito" onclick="mostrar();"></button>
+    <div id="img_carrito">
+        <button id="boton_carrito" onclick="ocultar();"></button>
+        <form id="formularioServicio">
+            <label for="nombreServicio">Nombre del Servicio:</label>
+            <input type="text" id="nombreServicio" required>
+            <br>
+            <label for="precioPorHora">Precio por Hora:</label>
+            <input type="number" id="precioPorHora" step="0.01" required>
+            <br>
+            <label for="horas">Horas:</label>
+            <input type="number" id="horas" required>
+            <br>
+            <button type="submit">Agregar al carrito</button>
+        </form>
+        
+        <h3 class="h3_carrito">Carrito</h3>
+        <div id="carritoContainer"></div>
+        
+        <p id="totalCarrito"></p>
+    </div>
+</section>
     <header id="header">
-        <h1>Servicios</h1> 
-        <img class="carrito" src="img/carrito-de-compras.png" alt="carrito">
+        <h1>Servicios (pincha el carrito para ver avance --->)</h1> 
+        <div id="carrito-contenido" class="carrito-contenido">
+            <img id="carrito" src="img/carrito-de-compras.png" alt="carrito" onclick="mostrar();">
+            <img id="carrito" src="img/simbolo-x.png" alt="carrito" onclick=" ocultar();">
+        </div>
     </header>
     <div id="contenedor" class="contenedor">
         <div>
@@ -93,6 +120,5 @@
         <p>copyright &copy;2020 - designed by <span>Cesar Jimenez</span></p>
     </div>
     </footer>
-    <script src="js/app.js"></script>
 </body>
 </html>

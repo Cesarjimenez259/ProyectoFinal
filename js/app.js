@@ -1,52 +1,87 @@
-// Objeto Servicio - funcion
 function Servicio(nombre, precioPorHora) {
     this.nombre = nombre;
     this.precioPorHora = precioPorHora;
 }
 
-// variable
 let carrito = [];
 
-// Función
 function agregarAlCarrito(servicio, horas) {
-    // filter verifica la existencia del dato ingresado
-    const servicioExistente = carrito.filter(item => item.servicio.nombre === servicio.nombre)[0];
+    const servicioExistente = carrito.find(item => item.servicio.nombre === servicio.nombre);
 
     if (servicioExistente) {
-        // Si el servicio ya está en el carrito, simplemente actualiza las horas
         servicioExistente.horas += horas;
     } else {
-        // pushea un dato nuevop
         carrito.push({ servicio, horas });
+    }
+
+    gCarritoLStorage();
+    mostrarCarrito();
+    limpiarFormulario();
+}
+
+function eliminarDelCarrito(nombreServicio) {
+    carrito = carrito.filter(item => item.servicio.nombre !== nombreServicio);
+    gCarritoLStorage();
+    mostrarCarrito();
+}
+
+function gCarritoLStorage() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function cCarritoLStorage() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
     }
 }
 
-// ingreso de datos 
-let nombreServicio = prompt("Que servicio tomará?:");
-let precioPorHora = parseFloat(prompt(" Precio por Hora:"));
-let horas = parseInt(prompt("Cuantas Horas necesita de mi ayuda?:"));
+function mostrarCarrito() {
+    const carritoContainer = document.getElementById('carritoContainer');
+    carritoContainer.innerHTML = ''; // Limpiar contenido previo
 
-// Crea un nuevo dato
-let nuevoServicio = new Servicio(nombreServicio, precioPorHora);
+    carrito.forEach(item => {
+        const servicioInfo = document.createElement('div');
+        servicioInfo.textContent = `${item.servicio.nombre} - Horas: ${item.horas}`;
 
-// agrega datos al carrito
-agregarAlCarrito(nuevoServicio, horas);
+        const eliminarBtn = document.createElement('button');
+        eliminarBtn.textContent = 'Eliminar';
+        eliminarBtn.addEventListener('click', () => {
+            eliminarDelCarrito(item.servicio.nombre);
+        });
 
-// Mostrar servicios en el carrito
-console.log("Servicios en el carrito:");
-//bucle
-for (let i = 0; i < carrito.length; i= i + 1) {
-    console.log(`${carrito[i].servicio.nombre} - Horas: ${carrito[i].horas}`);
+        servicioInfo.appendChild(eliminarBtn);
+        carritoContainer.appendChild(servicioInfo);
+    });
+
+    document.getElementById('totalCarrito').textContent = `Total del carrito: $${resultado()}`;
 }
 
-//total del Carrito
 function resultado() {
     let total = 0;
-    //iterar
-    carrito.forEach(function(item) {
+    carrito.forEach(item => {
         total += item.servicio.precioPorHora * item.horas;
     });
-    return total;
+    return total.toFixed(2); // Redondear a 2 decimales
 }
-//imprime el total 
-console.log(`Total del carrito: $${resultado()}`);
+
+function limpiarFormulario() {
+    document.getElementById("nombreServicio").value = "";
+    document.getElementById("precioPorHora").value = "";
+    document.getElementById("horas").value = "";
+}
+
+cCarritoLStorage();
+
+document.getElementById('formularioServicio').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+
+    const nombreServicio = document.getElementById("nombreServicio").value;
+    const precioPorHora = parseFloat(document.getElementById("precioPorHora").value);
+    const horas = parseInt(document.getElementById("horas").value);
+
+    const nuevoServicio = new Servicio(nombreServicio, precioPorHora);
+    agregarAlCarrito(nuevoServicio, horas);
+});
+
+mostrarCarrito();
