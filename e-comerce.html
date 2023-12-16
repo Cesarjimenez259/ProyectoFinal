@@ -1,124 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos/styles.css">
-    <link rel="stylesheet" href="estilos/Estyles.css">
-    <script src="./js/app.js" defer></script>
-    <script src="./js/main.js" ></script>
-    
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <title>Services</title>
+    <link rel="stylesheet" href="estilos/ecomerce.css">
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <title>Carrito de compras</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-        
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="./js/services.js"></script>
+    <script src="./js/app.js" defer></script>
+    <script src="./js/carrito.js" defer></script>
 </head>
 <body>
-<section>
-    <button id="boton_carrito" onclick="mostrar();"></button>
-    <div id="img_carrito">
-        <button id="boton_carrito" onclick="ocultar();"></button>
-        <form id="formularioServicio">
-            <label for="nombreServicio">Nombre del Servicio:</label>
-            <input type="text" id="nombreServicio" required>
-            <br>
-            <label for="precioPorHora">Precio por Hora:</label>
-            <input type="number" id="precioPorHora" step="0.01" required>
-            <br>
-            <label for="horas">Horas:</label>
-            <input type="number" id="horas" required>
-            <br>
-            <button type="submit">Agregar al carrito</button>
-        </form>
-        
-        <h3 class="h3_carrito">Carrito</h3>
-        <div id="carritoContainer"></div>
-        
-        <p id="totalCarrito"></p>
-    </div>
-</section>
-    <header id="header">
-        <h1>Servicios (pincha el carrito para ver avance --->)</h1> 
-        <div id="carrito-contenido" class="carrito-contenido">
-            <img id="carrito" src="img/carrito-de-compras.png" alt="carrito" onclick="mostrar();">
-            <img id="carrito" src="img/simbolo-x.png" alt="carrito" onclick=" ocultar();">
-        </div>
+    <header>
+        <nav>
+            <a href="./index.html"> <img src="./img/logo.png"  id="logo"></a>
+            <div>
+                <a class="nav" href="./index.html" target="_blank">Inicio</a>
+                <a class="nav" href="https://github.com/Cesarjimenez259" target="_blank">GitHub</a>
+                <a href="./carrito.html" target="_blank"><img src="./img/carrito-de-compras.png" id="img-carrito" alt="Carrito de compras"><span id="cuenta-carrito">0</span></a>
+            </div>
+        </nav>
     </header>
-    <div id="contenedor" class="contenedor">
-        <div>
-            <img src="img/servicio 1.jpg" alt="producto 1">
-            <div class="informacion">
-                <p>Servicio de Redes </p>
-                <p class="precio"> precio por hora $19<span>.99</span></p>
-                <button>Comprar</button>
-            </div>
-        </div>
-        <div>
-            <img src="img/servicio2.jpg" alt="producto 2">
-            <div class="informacion">
-                <p>Diseño Web</p>                   
-                <p class="precio">precio por hora $39<span>.99</span></p>
-                <button>Comprar</button>
-            </div>
-        </div>
-        <div>
-            <img src="img/servicio3.jpg" alt="producto 3">
-            <div class="informacion">
-                <p>Javascript</p>                   
-                <p class="precio">precio por hora $29<span>.99</span></p>
-                <button>Comprar</button>
-            </div>
-        </div>
-        <div>
-            <img src="img/servicio4.jpg" alt="producto 4">
-            <div class="informacion">
-                <p>Testing</p>                   
-                <p class="precio">precio por hora $29<span>.99</span></p>
-                <button>Comprar</button>
-            </div>
-        </div>
-        <div>
-            <img src="img/servicio 5.jpg" alt="producto 5">
-            <div class="informacion">
-                <p>Gestión de Proyectos</p>                   
-                <p class="precio">precio por hora $59<span>.99</span></p>
-                <button>Comprar</button>
-            </div>
-        </div>
-        <div>
-            <img src="img/servicio6.jpg" alt="producto 6">
-            <div class="informacion">
-                <p>Ciberseguridad</p>                   
-                <p class="precio">precio por hora $89<span>.99</span></p>
-                <button>Comprar</button>
-            </div>
-        </div>
-        </div>
-    </div>
+    <main>
+        <h1>Servicios</h1>
+        <section id="productos-container"></section>
+    </main>
     <footer>
         <div class="footer-content">
-        <h3>Cesar Jimenez</h3>
-        <p>Branding, diseño y desarrollos creativos en el ámbito digital y tradicional.</p>
-
-    </div>
-    <div class="footer-bottom">
-        <p>copyright &copy;2020 - designed by <span>Cesar Jimenez</span></p>
-    </div>
+            <h3>Cesar Jimenez</h3>
+            <p>Branding, diseño y desarrollos creativos en el ámbito digital y tradicional.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2023 - designed by <span>Cesar Jimenez</span></p>
+        </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

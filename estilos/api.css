@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:rgb(22,27,31) ;
+}
+h1{
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 50px;
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:18px;
+}
+.img-container{
+    display: flex;
+    & img{
+        width: 100%;
+    }
+}
+article{
+    padding: 10px;
+    box-shadow: 0px 0px 1px #fff ;
+}
+h2{
+    color: #fff;
+}
+span{
+    color: #fff;
+}
+p{
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+}
+
